@@ -1225,14 +1225,14 @@ $ prop &lt;dbl&gt; 0.07238359, 0.02667896, 0.02052149, 0.01986579, 0.01788843, 0
 <li><strong><code>ndensity</code></strong> - density, scaled to maximum of 1</li>
 </ul>
 <p>To access: + old way: <strong><code>..&lt;stat name&gt;..</code></strong> + new way: <strong><code>stat(name)</code></strong></p>
-</div><div class="column" style="width:60%;">
+</div><div class="column" style="width:50%;">
 <div class="sourceCode" id="cb24" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ)) <span class="sc">+</span></span>
 <span id="cb24-2"><a href=""></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">stat</span>(density)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-39-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-39-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -1447,7 +1447,12 @@ $ prop &lt;dbl&gt; 0.07238359, 0.02667896, 0.02052149, 0.01986579, 0.01788843, 0
 <div class="columns">
 <div class="column" style="width:40%;">
 <p><strong>Practice exercise</strong></p>
-<p>Use the <code>mpg</code> data to recreate the plot shown on the right.</p>
+<p>Use the <code>mpg</code> data to recreate the plot shown on the right. You may use the following parameters:</p>
+<ul>
+<li><p><code>bins = 10</code></p></li>
+<li><p><code>fill = "cadetblue3"</code></p></li>
+<li><p><code>alpha = 0.5</code></p></li>
+</ul>
 </div><div class="column" style="width:60%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1480,6 +1485,15 @@ $ prop &lt;dbl&gt; 0.07238359, 0.02667896, 0.02052149, 0.01986579, 0.01788843, 0
 <div class="sourceCode" id="cb31" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
 <span id="cb31-2"><a href=""></a>  <span class="fu">geom_boxplot</span>()</span>
 <span id="cb31-3"><a href=""></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-49-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -1501,6 +1515,15 @@ $ prop &lt;dbl&gt; 0.07238359, 0.02667896, 0.02052149, 0.01986579, 0.01788843, 0
 <div class="sourceCode" id="cb32" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
 <span id="cb32-2"><a href=""></a>  <span class="fu">geom_violin</span>()</span>
 <span id="cb32-3"><a href=""></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-50-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -1515,7 +1538,7 @@ $ prop &lt;dbl&gt; 0.07238359, 0.02667896, 0.02052149, 0.01986579, 0.01788843, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-49-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-51-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1617,7 +1640,7 @@ $ prop &lt;dbl&gt; 0.07238359, 0.02667896, 0.02052149, 0.01986579, 0.01788843, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-54-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-56-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1629,7 +1652,7 @@ $ prop &lt;dbl&gt; 0.07238359, 0.02667896, 0.02052149, 0.01986579, 0.01788843, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-55-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-57-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1744,7 +1767,7 @@ $ prop &lt;dbl&gt; 0.07238359, 0.02667896, 0.02052149, 0.01986579, 0.01788843, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-56-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-58-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
 </figure>
 </div>
 </div>
@@ -1780,7 +1803,7 @@ $ prop &lt;dbl&gt; 0.07238359, 0.02667896, 0.02052149, 0.01986579, 0.01788843, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-57-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-59-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
 </figure>
 </div>
 </div>
@@ -1814,21 +1837,21 @@ $ prop &lt;dbl&gt; 0.07238359, 0.02667896, 0.02052149, 0.01986579, 0.01788843, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-58-1.png" class="quarto-figure quarto-figure-center" style="width:55.0%"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-60-1.png" class="quarto-figure quarto-figure-center" style="width:55.0%"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-58-2.png" class="quarto-figure quarto-figure-center" style="width:55.0%"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-60-2.png" class="quarto-figure quarto-figure-center" style="width:55.0%"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-58-3.png" class="quarto-figure quarto-figure-center" style="width:55.0%"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-60-3.png" class="quarto-figure quarto-figure-center" style="width:55.0%"></p>
 </figure>
 </div>
 </div>
@@ -1861,7 +1884,7 @@ $ prop &lt;dbl&gt; 0.07238359, 0.02667896, 0.02052149, 0.01986579, 0.01788843, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-59-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-61-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1894,7 +1917,7 @@ $ prop &lt;dbl&gt; 0.07238359, 0.02667896, 0.02052149, 0.01986579, 0.01788843, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-60-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-62-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1927,7 +1950,7 @@ $ prop &lt;dbl&gt; 0.07238359, 0.02667896, 0.02052149, 0.01986579, 0.01788843, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-61-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-63-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1963,7 +1986,7 @@ $ prop &lt;dbl&gt; 0.07238359, 0.02667896, 0.02052149, 0.01986579, 0.01788843, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-62-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-64-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1995,7 +2018,7 @@ $ prop &lt;dbl&gt; 0.07238359, 0.02667896, 0.02052149, 0.01986579, 0.01788843, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-63-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-65-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
 </figure>
 </div>
 </div>
@@ -2028,7 +2051,7 @@ $ prop &lt;dbl&gt; 0.07238359, 0.02667896, 0.02052149, 0.01986579, 0.01788843, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-64-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-66-1.png" class="quarto-figure quarto-figure-center" width="576"></p>
 </figure>
 </div>
 </div>

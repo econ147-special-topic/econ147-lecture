@@ -928,8 +928,9 @@ knitr::include_graphics("image/gg_stat.png")
 
 ## Statistics
 
-:::: columns
+:::: {.columns}
 ::: {.column width="60%" style="font-size: 0.8em;"}
+
 **Computed aesthetics**
 
 When a stat perform a transformation, new variables are created.
@@ -962,8 +963,9 @@ ggplot(data = mpg, mapping = aes(x = displ)) +
 
 ## Statistics
 
-:::: columns
-::: {.column width="40%" style="font-size: 0.8em;"}
+:::: {.columns}
+
+::: {.column width="50%" style="font-size: 0.8em;"}
 **Computed aesthetics**
 
 When a stat perform a transformation, new variables are created.
@@ -978,26 +980,28 @@ e.g., in `geom_histogram` computed variables are:
 To access: + old way: **`..<stat name>..`** + new way: **`stat(name)`**
 :::
 
-
-::: {.column width="60%"}
-
+::: {.column width="50%"}
 ``` {.r code-line-numbers="2"}
 ggplot(data = mpg, mapping = aes(x = displ)) +
   geom_histogram(aes(y = stat(density)))
 ```
 
 ``` {r}
+#| echo: false
+#| fig-height: 7
+#| fig-width: 6
+#| 
 ggplot(data = mpg, mapping = aes(x = displ)) +
   geom_histogram(aes(y = stat(density)))
 ```
-
 :::
+
 ::::
 
 
 ## Displaying distribution
 
-:::: columns
+:::: {.columns}
 ::: {.column width="40%"}
 Ways to look at distributions:
 
@@ -1236,7 +1240,13 @@ ggplot(data = data1, mapping = aes(x = depth, color = cut, fill = cut)) +
 ::: {.column width="40%"}
 **Practice exercise**
 
-Use the `mpg` data to recreate the plot shown on the right.
+Use the `mpg` data to recreate the plot shown on the right. You may use the following parameters:
+
+- `bins = 10`
+
+- `fill = "cadetblue3"`
+
+- `alpha = 0.5`
 :::
 
 ::: {.column width="60%"}
@@ -1286,6 +1296,17 @@ ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
   geom_boxplot()
   
 ```
+
+```{r}
+#| echo: false
+#| fig-width: 5
+#| fig-height: 4
+#| fig-align: center
+
+ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
+  geom_boxplot()
+```
+
 :::
 :::
 
@@ -1308,6 +1329,17 @@ ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
 
 ::: {.column width="60%"}
 ``` {.r code-line-numbers="2"}
+ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
+  geom_violin()
+  
+```
+
+``` {r}
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5
+#| fig-align: center
+
 ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
   geom_violin()
   
