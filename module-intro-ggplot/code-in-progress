@@ -1,4 +1,3 @@
-
 # The grammar of graphics
 
 ## Why ggplot2?
@@ -42,40 +41,6 @@ knitr::include_graphics("image/gg_book_cover.jfif")
 ::: aside
 Source: [The grammar of graphics](https://link.springer.com/book/10.1007/0-387-28695-0)\]
 :::
-:::
-::::
-
-# Data and mapping
-
-## Data
-
-:::: {.columns}
-::: {.column width="60%"}
--   syntax
-
-``` {.r code-line-numbers="1"}
-ggplot(data = <dataset>)
-```
-
--   For ggplot graphs, data are usually wrangled.
-
--   Tidy data
-
-    -   Each variable is a column
-
-    -   Each observation is a row
-
-    -   Each value is a cell
-:::
-
-::: {.column width="40%"}
-```{r}
-#| echo: FALSE
-#| out-width: 95%
-#| fig-align: center
-
-knitr::include_graphics("image/gg_data.png")
-```
 :::
 ::::
 
@@ -387,6 +352,42 @@ ggplot(data = data1,
 ```
 :::
 :::
+
+
+# Data and mapping
+
+## Data
+
+:::: {.columns}
+::: {.column width="60%"}
+-   syntax
+
+``` {.r code-line-numbers="1"}
+ggplot(data = <dataset>)
+```
+
+-   For ggplot graphs, data are usually wrangled.
+
+-   Tidy data
+
+    -   Each variable is a column
+
+    -   Each observation is a row
+
+    -   Each value is a cell
+:::
+
+::: {.column width="40%"}
+```{r}
+#| echo: FALSE
+#| out-width: 95%
+#| fig-align: center
+
+knitr::include_graphics("image/gg_data.png")
+```
+:::
+::::
+
 
 ## Mapping
 
@@ -1894,8 +1895,8 @@ p +
 ```
 
 ```{r fig.height=3.2, fig.width=6, fig.align='center'}
-#| fig.height: 3
-#| fig-width: 6
+#| fig-height: 5
+#| fig-width: 7
 #| fig-align: center
 
 ggplot(mtcars, aes(mpg, wt)) + geom_point(size = 3) + 
@@ -1944,8 +1945,8 @@ p +
 ```
 
 ```{r}
-#| fig-height: 3
-#| fig-width: 6
+#| fig-height: 5
+#| fig-width: 7
 #| fig-align: center
 
 ggplot(mtcars, aes(mpg, wt)) + geom_point(size = 3) + 
@@ -2287,10 +2288,11 @@ ggplot(mtcars, aes(x = factor(cyl), fill = factor(vs))) +
 
 ## Scales and position adjustments
 
+**Practice exercise**
+
 :::: {.columns}
 
 ::: {.column width="50%"}
-**Practice exercise**
 
 Use the code below to generate a hypothetical dataset and recreate the barplot on the right.
 
@@ -2306,7 +2308,7 @@ df <- data.frame(supp=rep(c("VC", "OJ"), each=3),
 ::: {.column width="50%"}
 ```{r}
 #| echo: false
-#| fig-height: 6
+#| fig-height: 8
 #| fig-align: center
 
 ggplot(df, aes(x = dose, y = len, fill = supp)) + 
