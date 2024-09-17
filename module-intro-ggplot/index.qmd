@@ -54,7 +54,6 @@ theme_set(theme_minimal()) +
 - Facets and custom plots
 
 
-
 # The grammar of graphics
 
 ## Why ggplot2?
@@ -2379,28 +2378,509 @@ ggplot(df, aes(x = dose, y = len, fill = supp)) +
 ::::
 
 
+## Coordinates
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+syntax
+
+```{r}
+#| eval: false
+
+ggplot(data = <dataset>,
+       mapping = aes(x = <varX>, y = <varY>, ...)) +
+  geom_<function>(..., stat = <stat>, position = <position>) +
+  geom_<stat>(...) +
+  <scale function> +
+  <coordinate function>
+```
+
++ Coordinate are sets that locate points in space
+
++ `coord_cartesian()`
+
++ `coord_flip()`
+
++ `coord_polar()`
+
+:::
+
+::: {.column width="50%"}
+```{r echo=FALSE, out.width="70%"}
+knitr::include_graphics("image/gg_coord.png")
+```
+
+:::
+
+::::
+
+
+## Coordinates
+
+:::: {.columns}
+
+::: {.column width="50%" style="font-size: 0.8em;"}
+**`coord_cartesian()`**
+
+- default coordinate system
+
+**Zooming into plots**
+
+- setting limits using scale
+
+  - eliminates data outside the specified range
+  
+- setting limits using coordinate system
+
+  - proper way to zoom
+  
+  - does not eliminate data outside the plot
+
+**Parameters**
+
+```{.r}
+xlim, ylim, expand, clip
+```
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 5
+#| fig-width: 6
+#| fig-align: center
+p <- ggplot(mtcars, aes(x = mpg, y = hp)) + geom_point(size = 3) + geom_smooth(size = 1.5)
+
+print(p)
+```
+:::
+
+::::
+
+
+## Coordinates
+
+
+:::: {.columns}
+
+::: {.column width="50%" style="font-size: 0.8em;"}
+
+**`coord_cartesian()`**
+
+- default coordinate system
+
+**Zooming into plots**
+
+- setting limits using scale
+
+  - eliminates data outside the specified range
+  
+- setting limits using coordinate system
+
+  - proper way to zoom
+  
+  - does not eliminate data outside the plot
+
+**Parameters**
+
+```{.r}
+xlim, ylim, expand, clip
+```
+:::
+
+::: {.column width="50%"}
+```{.r code-line-numbers="2"}
+p + 
+  scale_x_continuous(limits = c(15, 20))
+```
+
+```{r fig.height=4, fig.width=6, fig.align='center'}
+#| fig-height: 5
+#| fig-width: 6
+#| fig-align: center
+
+p + 
+  scale_x_continuous(limits = c(15, 20))
+```
+:::
+
+::::
+
+
+## Coordinates
+
+:::: {.columns}
+
+::: {.column width="50%" style="font-size: 0.8em;"}
+**`coord_cartesian()`**
+
+- default coordinate system
+
+**Zooming into plots**
+
+- setting limits using scale
+
+  - eliminates data outside the specified range
+  
+- setting limits using coordinate system
+
+  - proper way to zoom
+  
+  - does not eliminate data outside the plot
+
+**Parameters**
+
+```{.r}
+xlim, ylim, expand, clip
+```
+:::
+
+::: {.column width="50%"}
+```{.r code-line-numbers="2"}
+p + 
+  coord_cartesian(xlim = c(15, 20))
+```
+
+```{r}
+#| fig-height: 5
+#| fig-width: 6
+#| fig-align: center
+
+p + 
+  coord_cartesian(xlim = c(15, 20))
+```
+:::
+
+::::
+
+
+## Coordinates
+
+:::: {.columns}
+
+::: {.column width="50%" style="font-size: 0.8em;"}
+
+**`coord_cartesian()`**
+
+- default coordinate system
+
+**Zooming into plots**
+
+- setting limits using scale
+
+  - eliminates data outside the specified range
+  
+- setting limits using coordinate system
+
+  - proper way to zoom
+  
+  - does not eliminate data outside the plot
+
+**Parameters**
+
+```{.r}
+xlim, ylim, expand, clip
+```
+:::
+
+::: {.column width="50%"}
+```{.r codeline-numbers="2"}
+p + 
+  coord_cartesian(expand = FALSE)
+```
+
+```{r}
+#| fig-height: 5
+#| fig-width: 6
+#| fig-align: center
+
+p + 
+  coord_cartesian(expand = FALSE)
+```
+:::
+
+::::
+
+
+---
+
+## Coordinates
+
+:::: {.columns}
+
+::: {.column width="50%" style="font-size: 0.8em;"}
+**`coord_cartesian()`**
+
+- default coordinate system
+
+**Zooming into plots**
+
+- setting limits using scale
+
+  - eliminates data outside the specified range
+  
+- setting limits using coordinate system
+
+  - proper way to zoom
+  
+  - does not eliminate data outside the plot
+
+**Parameters**
+
+```{.r}
+xlim, ylim, expand, clip
+```
+:::
+
+::: {.column width="50%"}
+```{.r code-line-numbers="2"}
+p + 
+  coord_cartesian(expand = FALSE,
+                  clip = "off")
+```
+
+```{r}
+#| fig-height: 5
+#| fig-width: 6
+#| fig-align: center
+
+p + 
+  coord_cartesian(expand = FALSE,
+                  clip = "off")
+```
+:::
+
+::::
+
+
+
+## Coordinates
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**`coord_flip()`**
+
+- Flips cartesian coordinates (i.e., horizontal axis becomes vertical axis).
+
+- Useful to draw plots in horizontal mode without having to change the aesthetic mappings.
+:::
+
+::: {.column width="50%"}
+```{.r code-line-numbers="2"}
+p + 
+  coord_flip()
+```
+
+```{r}
+p + 
+  coord_flip()
+```
+:::
+
+::::
+
+
+## Coordinates
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**`coord_polar()`**
+
++ Apply a polar coordinate system to the plot
+
+**Parameters**
+
+```{.r}
+theta : map angle to x or y
+direction: 1 (clockwise) -1 (anticlockwise)
+start: offset of starting point in radian
+```
+:::
+
+::: {.column width="50%"}
+```{.r code-line-numbers="2"}
+ggplot(mpg, aes(x = displ)) + 
+  geom_bar()
+```
+
+```{r}
+#| fig-height: 5
+#| fig-width: 6
+#| fig-align: center
+
+ggplot(mpg, aes(x = displ)) + 
+  geom_bar()
+```
+:::
+
+::::
+
+
+## Coordinates
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**`coord_polar()`**
+
++ Apply a pola coordinate system to the plot
+
+**Parameters**
+
+```
+theta : map angle to x or y
+direction: 1 (clockwise) -1 (anticlockwise)
+start: offset of starting point in radian
+```
+:::
+
+::: {.column width="50%"}
+```{.r code-line-numbers="2"}
+ggplot(mpg, aes(x = displ)) + geom_bar() +
+  coord_polar()
+```
+
+```{r}
+#| fig-height: 5
+#| fig-width: 6
+#| fig-align: center
+
+ggplot(mpg, aes(x = displ)) + geom_bar() +
+  coord_polar()
+```
+:::
+
+::::
+
+
+## Coordinates
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**`coord_polar()`**
+
++ Apply a pola coordinate system to the plot
+
+**Parameters**
+
+```{.r}
+theta : map angle to x or y
+direction: 1 (clockwise) -1 (anticlockwise)
+start: offset of starting point in radian
+```
+:::
+
+::: {.column width="50%"}
+```{.r code-line-numbers="2"}
+ggplot(mpg, aes(x = displ)) + geom_bar() +
+  coord_polar(theta = "y")
+```
+
+```{r}
+#| fig-height: 5
+#| fig-width: 6
+#| fig-align: center
+
+ggplot(mpg, aes(x = displ)) + geom_bar() +
+  coord_polar(theta = "y")
+```
+:::
+
+::::
+
+
+## Coordinates
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**`coord_polar()`**
+
++ Apply a pola coordinate system to the plot
+
+**Parameters**
+
+```{.r}
+theta : map angle to x or y
+direction: 1 (clockwise) -1 (anticlockwise)
+start: offset of starting point in radian
+```
+
+:::
+
+::: {.column width="50%"}
+```{.r code-line-numbers="3"}
+ggplot(mpg, aes(x = displ)) + geom_bar() +
+  coord_polar(theta = "y",
+              direction = -1)
+```
+
+```{r}
+#| fig-height: 5
+#| fig-width: 6
+#| fig-align: center
+
+ggplot(mpg, aes(x = displ)) + geom_bar() +
+  coord_polar(theta = "y",
+              direction = -1)
+```
+
+
+:::
+
+::::
+
+
+## Coordinates
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**`coord_polar()`**
+
++ Apply a pola coordinate system to the plot
+
+**Parameters**
+
+```{.r}
+theta : map angle to x or y
+direction: 1 (clockwise) -1 (anticlockwise)
+start: offset of starting point in radian
+```
+:::
+
+::: {.column width="50%"}
+```{.r code-line-numbers="3"}
+ggplot(mpg, aes(x = displ)) + geom_bar() +
+  coord_polar(theta = "y",
+              start = 0.5)
+```
+
+```{r }
+#| fig-height: 5
+#| fig-width: 6
+#| fig-align: center
+
+ggplot(mpg, aes(x = displ)) + geom_bar() +
+  coord_polar(theta = "y",
+              start = 0.5)
+```
+:::
+
+::::
+
+
 # 
 
 ![](img/bcon147-hex-logo.png){fig-align="center" height="40%" width="40%"}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
