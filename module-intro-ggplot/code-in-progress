@@ -1,3 +1,20 @@
+## Outline
+
+- The grammar of graphics
+
+- Datasets and mapping
+
+- Geometries
+
+- Statistical transformation and plotting distribution
+
+- Position adjustment and scales
+
+- Coordinates and themes
+
+- Facets and custom plots
+
+
 # The grammar of graphics
 
 ## Why ggplot2?
@@ -2822,6 +2839,591 @@ ggplot(mpg, aes(x = displ)) + geom_bar() +
 ::::
 
 
-# 
+# Facets and Themes
 
-![](img/bcon147-hex-logo.png){fig-align="center" height="40%" width="40%"}
+
+## Facets
+
+:::: {.columns}
+
+::: {.column width="50%"}
+syntax
+
+```{r eval=FALSE}
+#| eval: false
+
+ggplot(data = <dataset>,
+       mapping = aes(x = <varX>, y = <varY>, ...)) +
+  geom_<function>(..., stat = <stat>, position = <position>) +
+  geom_<stat>(...) +
+  <scale function> +
+  <coordinate function> +
+  facet_<function>
+  
+```
+
+- Facets divide plot into subplots based on the values of one or more discrete variables.
+
+- `facet_wrap()`
+
+- `facet_grid()`
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: 70%
+
+knitr::include_graphics("image/gg_facet.png")
+```
+:::
+
+::::
+
+
+## Facets
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**`facet_wrap`**
+
++ "wraps" a 1d ribbon of panels into 2d
++ useful if you have a variable with many levels
+
+**Parameters**
+
+```{.r}
+ncol
+nrow
+scales
+
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+
+theme_set(theme_gray())
+```
+
+```{r}
+#| fig-height: 4
+#| fig-width: 6
+#| fig-align: center
+
+ggplot(mpg, aes(x = displ, hwy)) + 
+  geom_blank() + 
+  xlab(NULL)
+```
+:::
+
+::::
+
+
+## Facets
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**`facet_wrap`**
+
++ "wraps" a 1d ribbon of panels into 2d
++ useful if you have a variable with many levels
+
+```{.r}
+ncol
+nrow
+scales
+
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 4
+#| fig-width: 6
+#| fig-align: center
+
+ggplot(mpg, aes(x = displ, hwy)) + 
+  geom_blank() + 
+  xlab(NULL) +
+  facet_wrap(~ class) #<<
+  
+```
+:::
+
+::::
+
+
+## Facets
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**`facet_grid`**
+
++ produces a 2d grid of panels defined by variables which form the rows and columns
+
++ `.~ a` spreads the values across columns
+
++ `b ~ .` spreads the values of `b` down the ro
+ws
++ `a ~ b` spreads `a` across columns and `b` down rows
+:::
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 4
+#| fig-width: 6
+#| fig-align: center
+
+ggplot(mpg, aes(x = displ, hwy)) + 
+  geom_blank() + 
+  xlab(NULL) +
+  facet_grid(. ~ cyl) #<<
+  
+```
+
+:::
+
+::::
+
+
+## Facets
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**`facet_grid`**
+
++ produces a 2d grid of panels defined by variables which form the rows and columns
++ `.~ a` spreads the values across columns
+
++ `b ~ .` spreads the values of `b` down the rows
+
++ `a ~ b` spreads `a` across columns and `b` down rows
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 4
+#| fig-width: 6
+#| figalign: center
+
+ggplot(mpg, aes(x = displ, hwy)) + 
+  geom_blank() + 
+  xlab(NULL) +
+  facet_grid(drv ~ .) #<<
+  
+```
+:::
+
+::::
+
+
+## Facets
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**`facet_grid`**
+
++ produces a 2d grid of panels defined by variables which form the rows and columns
++ `.~ a` spreads the values across columns
+
++ `b ~ .` spreads the values of `b` down the rows
+
++ `a ~ b` spreads `a` across columns and `b` down rows
+
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 4
+#| fig-width: 6
+#| fig-align: center
+
+ggplot(mpg, aes(x = displ, hwy)) + 
+  geom_blank() + 
+  xlab(NULL) +
+  facet_grid(drv ~ cyl) #<<
+  
+```
+:::
+
+::::
+
+
+## Themes
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| eval: false
+
+ggplot(data = <dataset>,
+       mapping = aes(x = <varX>, y = <varY>, ...)) +
+  geom_<function>(..., stat = <stat>, position = <position>) +
+  geom_<stat>(...) +
+  <scale function> +
+  <coordinate function> +
+  facet_<function>
+  theme_<function>
+  
+```
+
++ Controlling all non-data elements
+ + title appearance
+ + axis labels
+ + axis ticks
+ + strips
+ + ....
+
+:::
+
+::: {.column width="50%"}
+```{r echo=FALSE, out.width="70%"}
+#| echo: false
+#| out-width: 70%
+
+knitr::include_graphics("image/gg_theme.png")
+```
+
+:::
+
+::::
+
+
+## Themes
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Options**
+
++ Using the built-in-theme from `ggplot2` library
+  + `theme_gray()`
+  + `theme_bw()`
+  + `theme_light()`
+  + `theme_classic(`)
+  + `...`
+  
++ Using other package e.g., `ggthemes` 
+:::
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 4
+#| fig-width: 6
+#| fig-align: center
+
+ggplot(mpg, aes(x = displ, hwy, color = factor(cyl))) + 
+  geom_point(size = 3) +
+  theme_gray() #<<
+  
+```
+:::
+
+::::
+
+
+## Themes
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Options**
+
++ Using the built-in-theme from `ggplot2` library
+  + `theme_gray()`
+  + `theme_bw()`
+  + `theme_light()`
+  + `theme_classic(`)
+  + `...`
+  
++ Using other package e.g., `ggthemes` 
+:::
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 4
+#| fig-width: 6
+#| fig-align: center
+
+ggplot(mpg, aes(x = displ, hwy, color = factor(cyl))) + 
+  geom_point(size = 3) +
+  theme_bw() #<<
+  
+```
+:::
+
+::::
+
+
+## Themes
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Options**
+
++ Using the built-in-theme from `ggplot2` library
+  + `theme_gray()`
+  + `theme_bw()`
+  + `theme_light()`
+  + `theme_classic(`)
+  + `...`
+  
++ Using other package e.g., `ggthemes` 
+:::
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 4
+#| fig-width: 6
+#| fig-align: center
+
+ggplot(mpg, aes(x = displ, hwy, color = factor(cyl))) + 
+  geom_point(size = 3, show.legend = FALSE) +
+  facet_wrap(~ cyl) +
+  theme_bw() #<<
+  
+```
+:::
+
+::::
+
+
+## Themes
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Options**
+
++ Using the built-in-theme from `ggplot2` library
+  + `theme_gray()`
+  + `theme_bw()`
+  + `theme_light()`
+  + `theme_classic(`)
+  + `...`
+  
++ Using other package e.g., `ggthemes` 
+:::
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 4
+#| fig-width: 6
+#| fig-align: center
+
+ggplot(mpg, aes(x = displ, hwy, color = factor(cyl))) + 
+  geom_point(size = 3) +
+  theme_classic() #<<
+  
+```
+:::
+
+::::
+
+
+## Themes
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Options**
+
++ Using the built-in-theme from `ggplot2` library
+  
++ Using other package e.g., `ggthemes` 
+  + `theme_economist_white()`
+  + `theme_fivethirtyeight()`
+  + `theme_stata()`
+  + `theme_tufte()`
+  
+:::
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 4
+#| fig-width: 6
+#| fig-align: center
+
+library(ggthemes)
+ggplot(mpg, aes(x = displ, hwy, color = factor(cyl))) + 
+  geom_point(size = 3) +
+  theme_economist_white() #<<
+  
+```
+:::
+
+::::
+
+
+## Themes
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Options**
+
++ Using the built-in-theme from `ggplot2` library
+  
++ Using other package e.g., `ggthemes` 
+  + `theme_economist_white()`
+  + `theme_fivethirtyeight()`
+  + `theme_stata()`
+  + `theme_tufte()`
+ 
+:::
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 4
+#| fig-width: 6
+#| fig-align: center
+
+ggplot(mpg, aes(x = displ, hwy, color = factor(cyl))) + 
+  geom_point(size = 3) +
+  theme_fivethirtyeight() #<<
+  
+```
+:::
+
+::::
+
+
+## Themes
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Options**
+
++ Using the built-in-theme from `ggplot2` library
+  
++ Using other package e.g., `ggthemes` 
+  + `theme_economist_white()`
+  + `theme_fivethirtyeight()`
+  + `theme_stata()`
+  + `theme_tufte()`
+  
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 4
+#| fig-width: 6
+#| figalign: center
+
+library(ggthemes)
+ggplot(mpg, aes(x = displ, hwy, color = factor(cyl))) + 
+  geom_point(size = 3) +
+  theme_stata() #<<
+  
+```
+:::
+
+::::
+
+
+## Themes
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Options**
+
++ Using the built-in-theme from `ggplot2` library
+  
++ Using other package e.g., `ggthemes` 
+  + `theme_economist_white()`
+  + `theme_fivethirtyeight()`
+  + `theme_stata()`
+  + `theme_tufte()`
+  
+:::
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 4
+#| fig-width: 6
+#| fig-align: center
+
+library(ggthemes)
+ggplot(mpg, aes(x = displ, hwy, color = factor(cyl))) + 
+  geom_point(size = 3) +
+  theme_tufte() #<<
+  
+```
+:::
+
+::::
+
+
+## Practice exercise
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Let's apply what we have covered!**
+
++ Use the mpg dataset to recreate the plot.
+
++ But first, we need to do some data wrangling!
+
++ Use the updated mpg data to mimic the plot.
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+
+mpg_2 <- mpg %>% 
+  mutate(drive = case_when(drv == "f" ~ "front-wheel drive",
+                           drv == "r" ~ "rear-wheel drive",
+                           drv == "4" ~ "4-wheel drive"),
+         transport = case_when(str_detect(trans, "auto") ~ "automatic trans.",
+                               str_detect(trans, "manual") ~ "manual trans."))
+```
+
+```{r}
+#| echo: false
+#| fig-height: 4
+#| fig-width: 6
+#| fig-align: center
+
+ggplot(mpg_2, aes(displ, hwy)) + 
+  geom_point(size = 3, alpha = 0.5) +
+  geom_smooth(method = "lm") +
+  facet_grid(transport ~ drive) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"),
+        strip.text = element_text(face = "bold")) +
+  labs(title = "Car fuel consumption",
+       x  = "Engine displacement (volume in litres)",
+       y = "Highway miles per gallon (mpg)")
+```
+:::
+
+::::
+
+
+##
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+
+knitr::include_graphics("img/econ148-hex-logo.png")
+```
