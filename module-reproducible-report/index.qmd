@@ -122,6 +122,10 @@ theme_set(theme_minimal()) +
 
 ## Quarto document elements
 
+![](img/quarto-elements.png){fig-align="left" width="60%"}
+
+## Quarto document elements
+
 - show the different elements in the default Quarto doc
 
 
