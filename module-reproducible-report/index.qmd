@@ -24,7 +24,7 @@ editor: visual
 knitr::opts_chunk$set(comment = "", collapse = TRUE)
 
 ## working directory
-setwd("D:/Githu-repository/econ147-special-topic-bcon/econ147-lecture/module-reproducible-report")
+# setwd("D:/Githu-repository/econ147-special-topic-bcon/econ147-lecture/module-reproducible-report")
 
 ## libraries
 pacman::p_load(knitr, tidyverse, metathis)
@@ -35,21 +35,17 @@ theme_set(theme_minimal()) +
 
 ```
 
-
 ## Outline
 
-- Introduction to Quarto
+-   Introduction to Quarto
 
-- Quarto document elements
+-   Quarto document elements
 
-- Exercise: generating report
+-   Exercise: generating report
 
-- Improving report
-
-
+-   Improving report
 
 # Introduction to Quarto
-
 
 ## Reproducibility
 
@@ -117,7 +113,6 @@ theme_set(theme_minimal()) +
 [Source: Baker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature, 533(7604), Article 7604. https://doi.org/10.1038/533452a](https://doi.org/10.1038/533452a)
 :::
 
-
 # Quarto document elements
 
 ## Quarto document elements
@@ -126,42 +121,37 @@ theme_set(theme_minimal()) +
 
 ## Quarto document elements
 
-- show the different elements in the default Quarto doc
-
+-   show the different elements in the default Quarto doc
 
 ## YAML
 
-- YAML header
+-   YAML header
 
-- Output types
+-   Output types
 
-- adding and formatting date
-
+-   adding and formatting date
 
 ## Code chunk
 
-- adding code chunk
+-   adding code chunk
 
-- adding code comments
-
+-   adding code comments
 
 ## Text
 
-- adding and formatting texts
+-   adding and formatting texts
 
-- adding headers
+-   adding headers
 
-- adding sentences
+-   adding sentences
 
-- inline code
+-   inline code
 
-- including links and images
-
+-   including links and images
 
 # Exercise: generating report
 
-- provide R project template for students to analyze, visualize and generate report.
-
+-   provide R project template for students to analyze, visualize and generate report.
 
 # Improving report
 
@@ -175,23 +165,4 @@ theme_set(theme_minimal()) +
 
 ## customizing report
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Trial header
