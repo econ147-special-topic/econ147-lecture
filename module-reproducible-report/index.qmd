@@ -117,11 +117,19 @@ theme_set(theme_minimal()) +
 
 ## Quarto document elements
 
-![](img/quarto-elements.png){fig-align="left" width="60%"}
+<br>
+
+![](img/quarto-elements.png){fig-align="center" width="60%" height="60%"}
+
 
 ## Quarto document elements
 
--   show the different elements in the default Quarto doc
+#### Renderring or knitting file
+
+![](img/quarto-knitted-example.png){fig-align="center" width="80%" height="80%"}
+
+
+
 
 ## YAML
 
@@ -131,11 +139,121 @@ theme_set(theme_minimal()) +
 
 -   adding and formatting date
 
+
+## YAML
+
+#### Yet Another Markup Language
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- refers to the metadata at the top of the document
+
+- define the structure, appearance, and behavior
+
+- enclosed by 3 dashes `---`
+:::
+
+::: {.column width="50%"}
+```{.r}
+---
+title: "My Analysis Report"
+author: "John Doe"
+date: "2024-09-21"
+format: html
+editor: visual
+---
+
+```
+
+:::
+
+::::
+
+
+## YAML
+
+#### Yet Another Markup Language
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- `title`: title of the document
+
+- `author`: author of the document
+
+- `date`: date of the document
+
+- `format`: output format
+
+- `editor`: editor used to create the document
+:::
+
+::: {.column width="50%"}
+```{.r}
+---
+title: "My Analysis Report"
+author: "John Doe"
+date: "2024-09-21"
+format: html
+editor: visual
+---
+
+```
+
+:::
+
+::::
+
+
+
 ## Code chunk
 
 -   adding code chunk
 
 -   adding code comments
+
+
+## Code chunk
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- section of executable code embedded in the document
+
+- enable to run code and display output
+
+- enclosed by three back ticks and curly braces
+:::
+
+::: {.column width="50%"}
+![](img/code-chunk-sample.png){fig-align="center" width="80%" height="80%}
+
+
+:::
+
+::::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Text
 
