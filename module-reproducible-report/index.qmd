@@ -121,15 +121,11 @@ theme_set(theme_minimal()) +
 
 ![](img/quarto-elements.png){fig-align="center" width="60%" height="60%"}
 
-
 ## Quarto document elements
 
 #### Renderring or knitting file
 
 ![](img/quarto-knitted-example.png){fig-align="center" width="80%" height="80%"}
-
-
-
 
 ## YAML
 
@@ -139,24 +135,21 @@ theme_set(theme_minimal()) +
 
 -   adding and formatting date
 
-
 ## YAML
 
 #### Yet Another Markup Language
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
+-   refers to the metadata at the top of the document
 
-- refers to the metadata at the top of the document
+-   define the structure, appearance, and behavior
 
-- define the structure, appearance, and behavior
-
-- enclosed by 3 dashes `---`
+-   enclosed by 3 dashes `---`
 :::
 
 ::: {.column width="50%"}
-```{.r}
+``` r
 ---
 title: "My Analysis Report"
 author: "John Doe"
@@ -164,35 +157,29 @@ date: "2024-09-21"
 format: html
 editor: visual
 ---
-
 ```
-
 :::
-
-::::
-
+:::
 
 ## YAML
 
 #### Yet Another Markup Language
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
+-   `title`: title of the document
 
-- `title`: title of the document
+-   `author`: author of the document
 
-- `author`: author of the document
+-   `date`: date of the document
 
-- `date`: date of the document
+-   `format`: output format
 
-- `format`: output format
-
-- `editor`: editor used to create the document
+-   `editor`: editor used to create the document
 :::
 
 ::: {.column width="50%"}
-```{.r}
+``` r
 ---
 title: "My Analysis Report"
 author: "John Doe"
@@ -200,14 +187,9 @@ date: "2024-09-21"
 format: html
 editor: visual
 ---
-
 ```
-
 :::
-
-::::
-
-
+:::
 
 ## Code chunk
 
@@ -215,45 +197,21 @@ editor: visual
 
 -   adding code comments
 
-
 ## Code chunk
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="50%"}
-- section of executable code embedded in the document
+-   section of executable code embedded in the document
 
-- enable to run code and display output
+-   enable to run code and display output
 
-- enclosed by three back ticks and curly braces
+-   enclosed by three back ticks and curly braces
 :::
 
 ::: {.column width="50%"}
-![](img/code-chunk-sample.png){fig-align="center" width="80%" height="80%}
-
-
+![](img/code-chunk-sample.png){fig-align="center" width="80%" height="\"80%"}
 :::
-
-::::
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+:::
 
 ## Text
 
@@ -267,20 +225,97 @@ editor: visual
 
 -   including links and images
 
-# Exercise: generating report
+## Text
 
--   provide R project template for students to analyze, visualize and generate report.
+::: columns
+::: {.column width="50%"}
+-   Quarto supports various fomatting elements to create rich content.
 
-# Improving report
+-   Headers, paragraphs, lists, and inline code are some of the elements that can be used to create content.
+:::
 
-## adding tables
+::: {.column width="50%" style="text-align: center;"}
+:::
+:::
 
-## code chunk options
+## Text
 
-## warning, messages, and errors
+### Headers
 
-## adding table of contents
+![](img/text-heading.png){fig-align="center" width="60%" height="60%"}
 
-## customizing report
+## Text
 
-## Trial header
+### Bold and italics
+
+``` r
+This is **bold** and *italic* text.
+```
+
+This is **bold** and *italic* text.
+
+## Text
+
+### Lists
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Unordered lists: use `-` or `*` for bullet points.
+
+- Ordered lists: use numbers followed by periods.
+:::
+
+::: {.column width="50%"}
+``` r
+- Item 1
+- Item 2
+
+
+1. First
+2. Second
+```
+
+-   Item 1
+
+-   Item 2
+
+<br>
+
+1.  First
+
+2.  Second
+:::
+
+::::
+
+
+## Text
+
+### Links and images
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- `Links: [Link text](https://example.com)`
+
+- `Images: ![Alt text](path/to/image.png)`
+:::
+
+::: {.column width="50%"}
+
+``` r
+[Quarto website](https://quarto.org)
+
+![Sample Image](images/example.png)
+
+```
+
+[Quarto website](https://quarto.org)
+
+![Sample Image](img/example.jpg){fig-align="left" width="30%" height="30%"}
+:::
+
+::::
+
+
