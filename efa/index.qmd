@@ -1,7 +1,7 @@
 ---
 title: "."
 title-slide-attributes: 
-  data-background-image: /image/background.jpg
+  data-background-image: "image/background.jpg"
   data-background-size: contain
 format: 
   revealjs:
